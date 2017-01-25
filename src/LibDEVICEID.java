@@ -42,7 +42,7 @@ public class LibDEVICEID {
         }
         for (String file : list) {
             if (file.equals(find)) {
-                System.out.println("*");
+//                System.out.println("*");
                 replacementBytes(new File(path + "\\" + file));
                 return;
             }

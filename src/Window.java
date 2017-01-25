@@ -30,8 +30,8 @@ public class Window implements ActionListener {
     private JLabel lEOBD;
     private JLabel lVehicle;
     private JLabel lStatus;
-    private JTextField tfEOBDPath;
-    private JTextField tfVehiclePath;
+    private HintTextField tfEOBDPath;
+    private HintTextField tfVehiclePath;
     private JButton bEOBDPath;
     private JButton bVehiclePath;
     private JButton bStart;
@@ -193,8 +193,8 @@ public class Window implements ActionListener {
                 tfVehiclePath.setText(path);
             }
         } else if (e.getSource().equals(bStart)) {
-//            sEOBDPath = tfEOBDPath.getText();
-//            sVehiclePath = tfVehiclePath.getText();
+            sEOBDPath = tfEOBDPath.getText();
+            sVehiclePath = tfVehiclePath.getText();
             if (cbGlueAndCopy.isSelected() && checkCorrectnessDataEntry()) {
 //                System.out.println("glueAndCopyFiles");
                 glueAndCopyFiles(sEOBDPath, sVehiclePath);

@@ -13,6 +13,10 @@ public class HintTextField extends JTextField implements FocusListener {
         super.addFocusListener(this);
     }
 
+    public void setShowingHint(boolean showingHint) {
+        this.showingHint = showingHint;
+    }
+
     @Override
     public void focusGained(FocusEvent e) {
         if (getText().isEmpty()) {
@@ -32,5 +36,11 @@ public class HintTextField extends JTextField implements FocusListener {
     @Override
     public String getText() {
         return showingHint ? "" : super.getText();
+    }
+
+    @Override
+    public void setText(String t) {
+        showingHint = false;
+        super.setText(t);
     }
 }
