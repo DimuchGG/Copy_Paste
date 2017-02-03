@@ -7,13 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f51a2465-45ca-4a50-a763-d6c04a59ee46" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Copy_Paste/HintTextField.class" afterPath="$PROJECT_DIR$/out/production/Copy_Paste/HintTextField.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Copy_Paste/LibDEVICEID.class" afterPath="$PROJECT_DIR$/out/production/Copy_Paste/LibDEVICEID.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Copy_Paste/Window.class" afterPath="$PROJECT_DIR$/out/production/Copy_Paste/Window.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HintTextField.java" afterPath="$PROJECT_DIR$/src/HintTextField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibDEVICEID.java" afterPath="$PROJECT_DIR$/src/LibDEVICEID.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Window.java" afterPath="$PROJECT_DIR$/src/Window.java" />
     </list>
     <ignored path="Copy_Paste.iws" />
@@ -35,22 +30,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Window.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="190" column="44" selection-start-line="190" selection-start-column="44" selection-end-line="190" selection-end-column="44" />
+            <state relative-caret-position="-866">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="method#Window#0;class#Window#0" expanded="false" />
                 <element signature="method#initFrame#0;class#Window#0" expanded="false" />
                 <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+                <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
                 <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
                 <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+                <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+                <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
                 <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
                 <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
                 <element signature="method#setVisible#0;class#Window#0" expanded="false" />
                 <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
                 <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+                <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -66,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibDEVICEID.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LibDEVICEID.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LibDEVICEID.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+            <state relative-caret-position="1394">
+              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,10 +92,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/HintTextField.java" />
-        <option value="$PROJECT_DIR$/src/Window.java" />
-        <option value="$PROJECT_DIR$/src/LibDEVICEID.java" />
         <option value="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/LibDEVICEID.java" />
+        <option value="$PROJECT_DIR$/src/Window.java" />
       </list>
     </option>
   </component>
@@ -138,6 +137,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -145,12 +147,6 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="Copy_Paste">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -166,37 +162,16 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Copy_Paste">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="META-INF">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,7 +469,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -508,7 +483,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18305598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18229954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -544,19 +519,105 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Window.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#Window#0;class#Window#0" expanded="false" />
+            <element signature="method#initFrame#0;class#Window#0" expanded="false" />
+            <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#setVisible#0;class#Window#0" expanded="false" />
+            <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
+            <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibDEVICEID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3230">
+          <caret line="190" column="44" selection-start-line="190" selection-start-column="44" selection-end-line="190" selection-end-column="44" />
+          <folding>
+            <element signature="method#Window#0;class#Window#0" expanded="false" />
+            <element signature="method#initFrame#0;class#Window#0" expanded="false" />
+            <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#setVisible#0;class#Window#0" expanded="false" />
+            <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
+            <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibDEVICEID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="190" column="44" selection-start-line="190" selection-start-column="44" selection-end-line="190" selection-end-column="44" />
           <folding>
             <element signature="method#Window#0;class#Window#0" expanded="false" />
             <element signature="method#initFrame#0;class#Window#0" expanded="false" />
             <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
             <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
             <element signature="method#setVisible#0;class#Window#0" expanded="false" />
             <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
             <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -587,13 +648,17 @@
             <element signature="method#Window#0;class#Window#0" expanded="false" />
             <element signature="method#initFrame#0;class#Window#0" expanded="false" />
             <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
             <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
             <element signature="method#setVisible#0;class#Window#0" expanded="false" />
             <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
             <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -616,13 +681,17 @@
             <element signature="method#Window#0;class#Window#0" expanded="false" />
             <element signature="method#initFrame#0;class#Window#0" expanded="false" />
             <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
             <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
             <element signature="method#setVisible#0;class#Window#0" expanded="false" />
             <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
             <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -653,13 +722,17 @@
             <element signature="method#Window#0;class#Window#0" expanded="false" />
             <element signature="method#initFrame#0;class#Window#0" expanded="false" />
             <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
             <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
             <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
             <element signature="method#setVisible#0;class#Window#0" expanded="false" />
             <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
             <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -695,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -707,22 +779,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Window.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="190" column="44" selection-start-line="190" selection-start-column="44" selection-end-line="190" selection-end-column="44" />
-          <folding>
-            <element signature="method#Window#0;class#Window#0" expanded="false" />
-            <element signature="method#initFrame#0;class#Window#0" expanded="false" />
-            <element signature="method#initPanel#0;class#Window#0" expanded="false" />
-            <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
-            <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
-            <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
-            <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
-            <element signature="method#setVisible#0;class#Window#0" expanded="false" />
-            <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
-            <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
-          </folding>
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -734,20 +794,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+    <entry file="file://$PROJECT_DIR$/src/LibDEVICEID.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="1394">
+          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LibDEVICEID.java">
+    <entry file="file://$PROJECT_DIR$/src/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+        <state relative-caret-position="-866">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#Window#0;class#Window#0" expanded="false" />
+            <element signature="method#initFrame#0;class#Window#0" expanded="false" />
+            <element signature="method#initPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFirstRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillSecondRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillThirdRow#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockGlueAndCopy#0;class#Window#0" expanded="false" />
+            <element signature="method#createBlockReplaced#0;class#Window#0" expanded="false" />
+            <element signature="method#fillFourthRow#0;class#Window#0" expanded="false" />
+            <element signature="method#fillPanel#0;class#Window#0" expanded="false" />
+            <element signature="method#setVisible#0;class#Window#0" expanded="false" />
+            <element signature="method#selectDirectory#0;class#Window#0" expanded="false" />
+            <element signature="method#glueAndCopyFiles#0;class#Window#0" expanded="false" />
+            <element signature="method#checkCorrectnessDataEntry#0;class#Window#0" expanded="false" />
           </folding>
         </state>
       </provider>

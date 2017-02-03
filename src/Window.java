@@ -2,22 +2,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.*;
 
-public class Window implements ActionListener {
+public class Window {
 
-    private static final int WIDTH_FRAME = 530;
+    private static final int WIDTH_FRAME = 600;
     private static final int HEIGHT_FRAME = 220;
-    private static final int WIDTH_TEXT_FIELD = 384;
+    private static final int WIDTH_TEXT_FIELD = 450;
     private static final int HEIGHT_TEXT_FIELD = 26;
 
     private final String sEOBD = "Enter the path to the EOBD";
     private final String sVehicle = "Enter the path to the Vehicle";
     private final String sStartDirectory = "C:\\Data_\\";
-    private final String sProgramFiles = "C:\\Program Files\\Copy_Paste\\launch.bat";
-    private final String sProgramFilesPath = "C:\\\"Program Files\"\\Copy_Paste\\launch.bat";
-    private final String findFile = "libDEVICEID.so";
+    private final String sProgramFiles = "C:\\Program Files\\Copy_Paste\\";
+    private final String sProgramFilesPath = "C:\\\"Program Files\"\\Copy_Paste\\";
+    private final String sLaunchFile = "launch.bat";
+    private final String sLaunchDemoFile = "launch_demo.bat";
+    private final String sFindFile = "libDEVICEID.so";
+    private final String sEOBDVersion = "EOBD2V??.??";
     private String sEOBDPath = "C:\\Users\\Dimuch\\Desktop\\test\\EOBD";
     private String sVehiclePath = "C:\\Users\\Dimuch\\Desktop\\test\\Vehicle";
 
@@ -37,10 +42,13 @@ public class Window implements ActionListener {
     private JButton bStart;
     private JCheckBox cbGlueAndCopy;
     private JCheckBox cbReplaced;
+    private JCheckBox cbDemo;
     private JPanel pArrayBytes;
-    private HintTextField firstByte;
-    private HintTextField secondByte;
-    private HintTextField newByte;
+    private JPanel pLastRow;
+    private HintTextField tfFirstByte;
+    private HintTextField tfSecondByte;
+    private HintTextField tfNewByte;
+    private JTextField tfLastRow;
 
     public Window() {
         initFrame();
@@ -75,7 +83,12 @@ public class Window implements ActionListener {
         tfEOBDPath = new HintTextField(sEOBD);
         tfEOBDPath.setPreferredSize(new Dimension(WIDTH_TEXT_FIELD, HEIGHT_TEXT_FIELD));
         bEOBDPath = new JButton("Select");
-        bEOBDPath.addActionListener(this);
+        bEOBDPath.addActionListener(e -> {
+            String path = selectDirectory();
+            if (!path.equals("")) {
+                tfEOBDPath.setText(path);
+            }
+        });
         pFirstRow.add(new JTextField());
         pFirstRow.add(lEOBD);
         pFirstRow.add(tfEOBDPath);
@@ -88,7 +101,12 @@ public class Window implements ActionListener {
         tfVehiclePath = new HintTextField(sVehicle);
         tfVehiclePath.setPreferredSize(new Dimension(WIDTH_TEXT_FIELD, HEIGHT_TEXT_FIELD));
         bVehiclePath = new JButton("Select");
-        bVehiclePath.addActionListener(this);
+        bVehiclePath.addActionListener(e -> {
+            String path = selectDirectory();
+            if (!path.equals("")) {
+                tfVehiclePath.setText(path);
+            }
+        });
         pSecondRow.add(lVehicle);
         pSecondRow.add(tfVehiclePath);
         pSecondRow.add(bVehiclePath);
@@ -97,11 +115,41 @@ public class Window implements ActionListener {
     private void fillThirdRow() {
         pThirdRow.setLayout(new FlowLayout(FlowLayout.CENTER));
         cbGlueAndCopy = new JCheckBox("Glue and copy files");
-        cbReplaced = new JCheckBox("Replaced bytes");
-        cbReplaced.addActionListener(this);
+        cbGlueAndCopy.addActionListener(e -> {
+//            System.out.println("cbGlueAndCopy");
+            if (cbGlueAndCopy.isSelected()) {
+                pLastRow.setVisible(true);
+            } else {
+                pLastRow.setVisible(false);
+            }
+        });
         pThirdRow.add(cbGlueAndCopy);
+        pThirdRow.add(createBlockGlueAndCopy());
+        cbReplaced = new JCheckBox("Replaced bytes");
+        cbReplaced.addActionListener(e -> {
+//            System.out.println("cbReplaced");
+            if (cbReplaced.isSelected()) {
+                pArrayBytes.setVisible(true);
+            } else {
+                pArrayBytes.setVisible(false);
+            }
+        });
         pThirdRow.add(cbReplaced);
+        pThirdRow.add(createBlockReplaced());
+    }
 
+    private JPanel createBlockGlueAndCopy() {
+        pLastRow = new JPanel();
+        pLastRow.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        tfLastRow = new JTextField(sEOBDVersion);
+        pLastRow.add(tfLastRow);
+
+        pLastRow.setVisible(false);
+        return pLastRow;
+    }
+
+    private JPanel createBlockReplaced() {
         pArrayBytes = new JPanel();
         pArrayBytes.setBorder(BorderFactory.createLineBorder(Color.black));
         JPanel pThreeBytes = new JPanel();
@@ -110,16 +158,16 @@ public class Window implements ActionListener {
         JPanel pFirstArray = new JPanel();
         pFirstArray.setLayout(new FlowLayout(FlowLayout.CENTER));
         pFirstArray.add(new JLabel("D1"));
-        firstByte = new HintTextField("B0");
-        pFirstArray.add(firstByte);
+        tfFirstByte = new HintTextField("B0");
+        pFirstArray.add(tfFirstByte);
         pFirstArray.add(new JLabel("23"));
         pThreeBytes.add(pFirstArray);
 
         JPanel pSecondArray = new JPanel();
         pSecondArray.setLayout(new FlowLayout(FlowLayout.CENTER));
         pSecondArray.add(new JLabel("D1"));
-        secondByte = new HintTextField("B1");
-        pSecondArray.add(secondByte);
+        tfSecondByte = new HintTextField("B1");
+        pSecondArray.add(tfSecondByte);
         pSecondArray.add(new JLabel("23"));
         pThreeBytes.add(pSecondArray);
 
@@ -131,19 +179,48 @@ public class Window implements ActionListener {
         JPanel pThirdArray = new JPanel();
         pThirdArray.setLayout(new FlowLayout(FlowLayout.CENTER));
         pThirdArray.add(new JLabel("D1"));
-        newByte = new HintTextField("A9");
-        pThirdArray.add(newByte);
+        tfNewByte = new HintTextField("A9");
+        pThirdArray.add(tfNewByte);
         pThirdArray.add(new JLabel("23"));
         pArrayBytes.add(pThirdArray);
 
         pArrayBytes.setVisible(false);
-        pThirdRow.add(pArrayBytes);
+        return pArrayBytes;
     }
 
     private void fillFourthRow() {
         pFourthRow.setLayout(new FlowLayout(FlowLayout.CENTER));
+        cbDemo = new JCheckBox("Demo");
+        pFourthRow.add(cbDemo);
         bStart = new JButton("Start");
-        bStart.addActionListener(this);
+        bStart.addActionListener(e -> {
+            sEOBDPath = tfEOBDPath.getText();
+            sVehiclePath = tfVehiclePath.getText();
+            if (cbGlueAndCopy.isSelected() && checkCorrectnessDataEntry()) {
+//                System.out.println("glueAndCopyFiles");
+                glueAndCopyFiles(sEOBDPath, sVehiclePath, tfLastRow.getText());
+            }
+            if (cbReplaced.isSelected()) {
+                lStatus.setText("Replacement bytes");
+//                System.out.println("findFilesAndReplacementBytes");
+                Thread thread = new Thread(() -> {
+                    try {
+                        LibDEVICEID libDEVICEID = new LibDEVICEID(tfFirstByte.getText(),
+                                tfSecondByte.getText(), tfNewByte.getText());
+                        libDEVICEID.findFilesAndReplacementBytes(sVehiclePath, sFindFile);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                });
+                thread.start();
+                try {
+                    thread.join();
+                    lStatus.setText("Done");
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
         lStatus = new JLabel("Status");
         pFourthRow.add(bStart);
         pFourthRow.add(lStatus);
@@ -162,7 +239,7 @@ public class Window implements ActionListener {
     }
 
     public void setVisible(Boolean b) {
-        if (b.booleanValue()) {
+        if (b) {
             frame.setVisible(true);
         } else {
             frame.setVisible(false);
@@ -180,58 +257,14 @@ public class Window implements ActionListener {
         return "";
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(bEOBDPath)) {
-            String path = selectDirectory();
-            if (!path.equals("")) {
-                tfEOBDPath.setText(path);
-            }
-        } else if (e.getSource().equals(bVehiclePath)) {
-            String path = selectDirectory();
-            if (!path.equals("")) {
-                tfVehiclePath.setText(path);
-            }
-        } else if (e.getSource().equals(bStart)) {
-            sEOBDPath = tfEOBDPath.getText();
-            sVehiclePath = tfVehiclePath.getText();
-            if (cbGlueAndCopy.isSelected() && checkCorrectnessDataEntry()) {
-//                System.out.println("glueAndCopyFiles");
-                glueAndCopyFiles(sEOBDPath, sVehiclePath);
-            }
-            if (cbReplaced.isSelected()) {
-                lStatus.setText("Replacement bytes");
-//                System.out.println("findFilesAndReplacementBytes");
-                Thread thread = new Thread(() -> {
-                    try {
-                        LibDEVICEID libDEVICEID = new LibDEVICEID(firstByte.getText(),
-                                secondByte.getText(), newByte.getText());
-                        libDEVICEID.findFilesAndReplacementBytes(sVehiclePath, findFile);
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                });
-                thread.start();
-                try {
-                    thread.join();
-                    lStatus.setText("Done");
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        } else if (e.getSource().equals(cbReplaced)) {
-            if (cbReplaced.isSelected()) {
-                pArrayBytes.setVisible(true);
-            } else {
-                pArrayBytes.setVisible(false);
-            }
+    private void glueAndCopyFiles(String sEOBDPath, String sVehiclePath, String sEOBDVersion) {
+        String sLaunchFile = this.sLaunchFile;
+        if (cbDemo.isSelected()) {
+            sLaunchFile = this.sLaunchDemoFile;
         }
-    }
-
-    private void glueAndCopyFiles(String sEOBDPath, String sVehiclePath) {
-        System.out.println("cmd /c " + sProgramFilesPath + " " + sEOBDPath + " " + sVehiclePath);
+//        System.out.println("cmd /c start " + sProgramFilesPath + sLaunchFile + " " + sEOBDPath + " " + sVehiclePath + " " + sEOBDVersion);
         try {
-            Runtime.getRuntime().exec("cmd /c start " + sProgramFilesPath + " " + sEOBDPath + " " + sVehiclePath);
+            Runtime.getRuntime().exec("cmd /c start " + sProgramFilesPath + sLaunchFile + " " + sEOBDPath + " " + sVehiclePath + " " + sEOBDVersion);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -239,6 +272,7 @@ public class Window implements ActionListener {
     }
 
     private boolean checkCorrectnessDataEntry() {
-        return (new File(sProgramFiles)).exists();
+//        System.out.println(sProgramFiles + sLaunchFile);
+        return (new File(sProgramFiles + sLaunchFile)).exists();
     }
 }
