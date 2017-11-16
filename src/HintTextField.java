@@ -1,8 +1,13 @@
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.text.MyEditorKit;
 
 public class HintTextField extends JTextField implements FocusListener {
+    private static final String CUT = "Вырезать";
+    private static final String COPY = "Копировать";
+    private static final String PASTE = "Вставить";
+    private static final String SELECT_ALL = "Выделить все";
     private final String hint;
     private boolean showingHint;
 
@@ -11,6 +16,30 @@ public class HintTextField extends JTextField implements FocusListener {
         this.hint = hint;
         this.showingHint = true;
         super.addFocusListener(this);
+
+        JPopupMenu menu = new JPopupMenu();
+        Action cut = new MyEditorKit.CutAction();
+        cut.putValue(Action.NAME, CUT);
+        cut.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control X"));
+        menu.add( cut );
+
+        Action copy = new MyEditorKit.CopyAction();
+        copy.putValue(Action.NAME, COPY);
+        copy.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control C"));
+        menu.add( copy );
+
+        Action paste = new MyEditorKit.PasteAction();
+        paste.putValue(Action.NAME, PASTE);
+        paste.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control V"));
+        menu.add( paste );
+
+        Action selectAll = new MyEditorKit.SelectAllAction();
+        selectAll.putValue(Action.NAME, SELECT_ALL);
+        selectAll.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control A"));
+        menu.add( selectAll );
+//        new MyEditorKit.
+
+        this.setComponentPopupMenu( menu );
     }
 
     public void setShowingHint(boolean showingHint) {
