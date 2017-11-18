@@ -11,27 +11,27 @@ public class Window {
     private static final String COPY_PASTE = "Калькулятор";
 
     private final String START = "Начать";
-//    private final String START = "Start";
+    //    private final String START = "Start";
     private final String REPLACEMENT_BYTES = "Замена байт";
-//    private final String REPLACEMENT_BYTES = "Replacement bytes";
+    //    private final String REPLACEMENT_BYTES = "Replacement bytes";
     private final String DONE = "Выполнено";
-//    private final String DONE = "Done";
+    //    private final String DONE = "Done";
     private final String STATUS = "Статус";
-//    private final String STATUS = "Status";
+    //    private final String STATUS = "Status";
     private final String GLUE_AND_COPY_FILES = "Объединить и скопировать файлы";
-//    private final String GLUE_AND_COPY_FILES = "Glue and copy files";
+    //    private final String GLUE_AND_COPY_FILES = "Glue and copy files";
     private final String REPLACED_BYTES = "Байты заменены";
-//    private final String REPLACED_BYTES = "Replaced bytes";
+    //    private final String REPLACED_BYTES = "Replaced bytes";
     private final String VEHICLE = "Vehicle";
-//    private final String VEHICLE = "Vehicle";
+    //    private final String VEHICLE = "Vehicle";
     private final String SELECT = "Выбрать";
-//    private final String SELECT = "Select";
+    //    private final String SELECT = "Select";
     private final String EOBD = "EOBD";
-//    private final String EOBD = "EOBD";
+    //    private final String EOBD = "EOBD";
     private final String SELECT_DIRECTORY = "Выбрать директорию";
-//    private final String SELECT_DIRECTORY = "Select directory";
+    //    private final String SELECT_DIRECTORY = "Select directory";
     private final String sEOBD = "Введите путь к EOBD";
-//    private final String sEOBD = "Enter the path to the EOBD";
+    //    private final String sEOBD = "Enter the path to the EOBD";
     private final String sVehicle = "Введите путь к Vehicle";
 //    private final String sVehicle = "Enter the path to the Vehicle";
 
@@ -61,9 +61,9 @@ public class Window {
     private JButton bStart;
     private JCheckBox cbGlueAndCopy;
     private JCheckBox cbReplaced;
-//    private JCheckBox cbDemo;
+    //    private JCheckBox cbDemo;
     private JPanel pArrayBytes;
-//    private JPanel pLastRow;
+    //    private JPanel pLastRow;
     private HintTextField tfFirstByte;
     private HintTextField tfSecondByte;
     private HintTextField tfNewByte;
@@ -228,11 +228,10 @@ public class Window {
 //                System.out.println("findFilesAndReplacementBytes");
                 Thread thread = new Thread(() ->
                         new LibDEVICEID(tfFirstByte.getText(), tfSecondByte.getText(), tfNewByte.getText())
-                        .findFilesAndReplacementBytes(sVehiclePath, sFindFileLibDeviceid));
+                                .findFilesAndReplacementBytes(sVehiclePath, sFindFileLibDeviceid));
                 thread.start();
                 thread = new Thread(() ->
-                        new LibDIAG(tfFirstByte.getText(), tfSecondByte.getText(), tfNewByte.getText())
-                        .findFilesAndReplacementBytes(sVehiclePath, sFindFileLibDiag));
+                        new LibDIAG().findFilesAndReplacementBytes(sVehiclePath, sFindFileLibDiag));
                 thread.start();
                 try {
                     thread.join();

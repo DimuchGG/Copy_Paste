@@ -16,6 +16,12 @@ public class LibDIAG {
     private String secondByte;
     private String newByte;
 
+    public LibDIAG() {
+        this.firstByte = BYTE_B0;
+        this.secondByte = BYTE_B1;
+        this.newByte = BYTE_A9;
+    }
+
     public LibDIAG(String firstByte, String secondByte, String newByte) {
         if (firstByte.isEmpty()) {
             this.firstByte = BYTE_B0;
