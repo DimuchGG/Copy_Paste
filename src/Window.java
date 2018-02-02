@@ -51,6 +51,7 @@ public class Window {
     private JPanel pSecondRow;
     private JPanel pThirdRow;
     private JPanel pFourthRow;
+    private JPanel pLastRow;
     private JLabel lEOBD;
     private JLabel lVehicle;
     private JLabel lStatus;
@@ -61,13 +62,12 @@ public class Window {
     private JButton bStart;
     private JCheckBox cbGlueAndCopy;
     private JCheckBox cbReplaced;
-    //    private JCheckBox cbDemo;
+    private JCheckBox cbDemo;
     private JPanel pArrayBytes;
-    //    private JPanel pLastRow;
     private HintTextField tfFirstByte;
     private HintTextField tfSecondByte;
     private HintTextField tfNewByte;
-//    private JTextField tfLastRow;
+    private JTextField tfLastRow;
 
     private final MyResourceUtils myResourceUtils;
 
@@ -114,7 +114,7 @@ public class Window {
             }
         });
         pFirstRow.add(new JTextField());
-//        pFirstRow.add(lEOBD);
+        pFirstRow.add(lEOBD);
         pFirstRow.add(tfEOBDPath);
         pFirstRow.add(bEOBDPath);
     }
@@ -133,7 +133,7 @@ public class Window {
 //                myResourceUtils.rewriteStartDir(START_DIR_VEHICLE, path);
             }
         });
-//        pSecondRow.add(lVehicle);
+        pSecondRow.add(lVehicle);
         pSecondRow.add(tfVehiclePath);
         pSecondRow.add(bVehiclePath);
     }
@@ -142,14 +142,13 @@ public class Window {
         pThirdRow.setLayout(new FlowLayout(FlowLayout.CENTER));
         cbGlueAndCopy = new JCheckBox(GLUE_AND_COPY_FILES);
         cbGlueAndCopy.setSelected(true);
-        cbGlueAndCopy.setVisible(false);
+//        cbGlueAndCopy.setVisible(false);
         pThirdRow.add(cbGlueAndCopy);
-//        pThirdRow.add(createBlockGlueAndCopy());
+        pThirdRow.add(createBlockGlueAndCopy());
         cbReplaced = new JCheckBox(REPLACEMENT_BYTES);
         cbReplaced.addActionListener(e -> {
-//            System.out.println("cbReplaced");
             if (cbReplaced.isSelected()) {
-//                pArrayBytes.setVisible(true);
+                pArrayBytes.setVisible(true);
             } else {
                 pArrayBytes.setVisible(false);
             }
@@ -158,16 +157,16 @@ public class Window {
         pThirdRow.add(createBlockReplaced());
     }
 
-//    private JPanel createBlockGlueAndCopy() {
-//        pLastRow = new JPanel();
-//        pLastRow.setBorder(BorderFactory.createLineBorder(Color.black));
-//
-//        tfLastRow = new JTextField(sEOBDVersion);
-//        pLastRow.add(tfLastRow);
-//
-//        pLastRow.setVisible(false);
-//        return pLastRow;
-//    }
+    private JPanel createBlockGlueAndCopy() {
+        pLastRow = new JPanel();
+        pLastRow.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        tfLastRow = new JTextField("test");
+        pLastRow.add(tfLastRow);
+
+        pLastRow.setVisible(false);
+        return pLastRow;
+    }
 
     private JPanel createBlockReplaced() {
         pArrayBytes = new JPanel();
