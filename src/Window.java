@@ -4,36 +4,13 @@ import javax.swing.*;
 
 public class Window {
 
-    private static final int WIDTH_FRAME = 600;
-    private static final int HEIGHT_FRAME = 220;
-    private static final int WIDTH_TEXT_FIELD = 450;
-    private static final int HEIGHT_TEXT_FIELD = 26;
-    private static final String COPY_PASTE = "Калькулятор";
-
-    private final String START = "Начать";
-    //    private final String START = "Start";
-    private final String REPLACEMENT_BYTES = "Замена байт";
-    //    private final String REPLACEMENT_BYTES = "Replacement bytes";
-    private final String DONE = "Выполнено";
-    //    private final String DONE = "Done";
-    private final String STATUS = "Статус";
-    //    private final String STATUS = "Status";
-    private final String GLUE_AND_COPY_FILES = "Объединить и скопировать файлы";
-    //    private final String GLUE_AND_COPY_FILES = "Glue and copy files";
-    private final String REPLACED_BYTES = "Байты заменены";
-    //    private final String REPLACED_BYTES = "Replaced bytes";
-    private final String VEHICLE = "Vehicle";
-    //    private final String VEHICLE = "Vehicle";
-    private final String SELECT = "Выбрать";
-    //    private final String SELECT = "Select";
-    private final String EOBD = "EOBD";
-    //    private final String EOBD = "EOBD";
-    private final String SELECT_DIRECTORY = "Выбрать директорию";
-    //    private final String SELECT_DIRECTORY = "Select directory";
-    private final String sEOBD = "Введите путь к EOBD";
-    //    private final String sEOBD = "Enter the path to the EOBD";
-    private final String sVehicle = "Введите путь к Vehicle";
-//    private final String sVehicle = "Enter the path to the Vehicle";
+    private final int WIDTH_FRAME = 640;
+    private final int HEIGHT_FRAME = 300;
+    private final int WIDTH_TEXT_FIELD = 450;
+    private final int HEIGHT_TEXT_FIELD = 26;
+    private final String COPY_PASTE = "Калькулятор";
+    private final int DEFAULT_WIDTH = 26;
+    private final int DEFAULT_HEIGHT = 26;
 
     private final String START_DIR_EOBD = "startDirectoryEOBD.txt";
     private final String START_DIR_VEHICLE = "startDirectoryVehicle.txt";
@@ -51,27 +28,29 @@ public class Window {
     private JPanel pSecondRow;
     private JPanel pThirdRow;
     private JPanel pFourthRow;
-    private JPanel pLastRow;
-    private JLabel lEOBD;
-    private JLabel lVehicle;
     private JLabel lStatus;
     private HintTextField tfEOBDPath;
     private HintTextField tfVehiclePath;
-    private JButton bEOBDPath;
-    private JButton bVehiclePath;
-    private JButton bStart;
     private JCheckBox cbGlueAndCopy;
     private JCheckBox cbReplaced;
     private JCheckBox cbDemo;
     private JPanel pArrayBytes;
     private HintTextField tfFirstByte;
     private HintTextField tfSecondByte;
-    private HintTextField tfNewByte;
+    private HintTextField tfThirdByte;
+    private HintTextField tfFourthByte;
+    private HintTextField tfFifthByte;
+    private HintTextField tfSixthByte;
+    private HintTextField tfNewFirstByte;
+    private HintTextField tfNewSecondByte;
+    private HintTextField tfNewThirdByte;
     private JTextField tfLastRow;
 
     private final MyResourceUtils myResourceUtils;
+    private HintTextField tfFileNameForChanging;
 
     public Window() {
+        myResourceUtils = new MyResourceUtils();
         initFrame();
         initPanel();
         fillFirstRow();
@@ -80,7 +59,6 @@ public class Window {
         fillFourthRow();
         fillPanel();
         addPanel();
-        myResourceUtils = new MyResourceUtils();
     }
 
     private void initFrame() {
@@ -101,17 +79,18 @@ public class Window {
 
     private void fillFirstRow() {
         pFirstRow.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        lEOBD = new JLabel(EOBD);
-        tfEOBDPath = new HintTextField(sEOBD);
-        tfEOBDPath.setPreferredSize(new Dimension(WIDTH_TEXT_FIELD, HEIGHT_TEXT_FIELD));
-        bEOBDPath = new JButton(SELECT);
+        JLabel lEOBD = new JLabel(Constants.EOBD);
+        tfEOBDPath = new HintTextField(Constants.sEOBD, WIDTH_TEXT_FIELD, HEIGHT_TEXT_FIELD);
+        String path = myResourceUtils.readFiles(START_DIR_EOBD);
+        if (!path.equals("")) {
+            tfEOBDPath.setText(path);
+        }
+        JButton bEOBDPath = new JButton(Constants.SELECT);
         bEOBDPath.addActionListener(e -> {
-            String path = selectDirectory(myResourceUtils.readFiles(START_DIR_EOBD));
-//            String path = selectDirectory(myResourceUtils.getStartDirEOBD(START_DIR_EOBD));
-            if (!path.equals("")) {
-                tfEOBDPath.setText(path);
-//                myResourceUtils.rewriteStartDir(START_DIR_EOBD, path);
-            }
+            String newPath = selectDirectory(myResourceUtils.readFiles(START_DIR_EOBD));
+            tfEOBDPath.setText(newPath);
+            myResourceUtils.rewriteFile(START_DIR_EOBD, newPath);
+
         });
         pFirstRow.add(new JTextField());
         pFirstRow.add(lEOBD);
@@ -121,17 +100,19 @@ public class Window {
 
     private void fillSecondRow() {
         pSecondRow.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        lVehicle = new JLabel(VEHICLE);
-        tfVehiclePath = new HintTextField(sVehicle);
+        JLabel lVehicle = new JLabel(Constants.VEHICLE);
+        tfVehiclePath = new HintTextField(Constants.sVehicle);
         tfVehiclePath.setPreferredSize(new Dimension(WIDTH_TEXT_FIELD, HEIGHT_TEXT_FIELD));
-        bVehiclePath = new JButton(SELECT);
+        String path = myResourceUtils.readFiles(START_DIR_VEHICLE);
+        if (!path.equals("")) {
+            tfVehiclePath.setText(path);
+        }
+        JButton bVehiclePath = new JButton(Constants.SELECT);
         bVehiclePath.addActionListener(e -> {
-            String path = selectDirectory(myResourceUtils.readFiles(START_DIR_VEHICLE));
-//            String path = selectDirectory(myResourceUtils.getStartDirEOBD(START_DIR_VEHICLE));
-            if (!path.equals("")) {
-                tfVehiclePath.setText(path);
-//                myResourceUtils.rewriteStartDir(START_DIR_VEHICLE, path);
-            }
+            String newPath = selectDirectory(myResourceUtils.readFiles(START_DIR_VEHICLE));
+            tfVehiclePath.setText(newPath);
+            myResourceUtils.rewriteFile(START_DIR_VEHICLE, newPath);
+
         });
         pSecondRow.add(lVehicle);
         pSecondRow.add(tfVehiclePath);
@@ -140,12 +121,12 @@ public class Window {
 
     private void fillThirdRow() {
         pThirdRow.setLayout(new FlowLayout(FlowLayout.CENTER));
-        cbGlueAndCopy = new JCheckBox(GLUE_AND_COPY_FILES);
+        cbGlueAndCopy = new JCheckBox(Constants.GLUE_AND_COPY_FILES);
         cbGlueAndCopy.setSelected(true);
 //        cbGlueAndCopy.setVisible(false);
         pThirdRow.add(cbGlueAndCopy);
         pThirdRow.add(createBlockGlueAndCopy());
-        cbReplaced = new JCheckBox(REPLACEMENT_BYTES);
+        cbReplaced = new JCheckBox(Constants.REPLACEMENT_BYTES);
         cbReplaced.addActionListener(e -> {
             if (cbReplaced.isSelected()) {
                 pArrayBytes.setVisible(true);
@@ -158,7 +139,7 @@ public class Window {
     }
 
     private JPanel createBlockGlueAndCopy() {
-        pLastRow = new JPanel();
+        JPanel pLastRow = new JPanel();
         pLastRow.setBorder(BorderFactory.createLineBorder(Color.black));
 
         tfLastRow = new JTextField("test");
@@ -170,39 +151,54 @@ public class Window {
 
     private JPanel createBlockReplaced() {
         pArrayBytes = new JPanel();
+        pArrayBytes.setLayout(new BoxLayout(pArrayBytes, BoxLayout.Y_AXIS));
         pArrayBytes.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        JPanel pVertival = new JPanel();
         JPanel pThreeBytes = new JPanel();
         pThreeBytes.setLayout(new BoxLayout(pThreeBytes, BoxLayout.Y_AXIS));
 
         JPanel pFirstArray = new JPanel();
         pFirstArray.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pFirstArray.add(new JLabel("D1"));
-        tfFirstByte = new HintTextField("B0");
+        tfFirstByte = new HintTextField("D1", DEFAULT_WIDTH, DEFAULT_HEIGHT);
         pFirstArray.add(tfFirstByte);
-        pFirstArray.add(new JLabel("23"));
+        tfSecondByte = new HintTextField("B0", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pFirstArray.add(tfSecondByte);
+        tfThirdByte = new HintTextField("23", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pFirstArray.add(tfThirdByte);
         pThreeBytes.add(pFirstArray);
 
         JPanel pSecondArray = new JPanel();
         pSecondArray.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pSecondArray.add(new JLabel("D1"));
-        tfSecondByte = new HintTextField("B1");
-        pSecondArray.add(tfSecondByte);
-        pSecondArray.add(new JLabel("23"));
+        tfFourthByte = new HintTextField("D1", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pSecondArray.add(tfFourthByte);
+        tfFifthByte = new HintTextField("B1", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pSecondArray.add(tfFifthByte);
+        tfSixthByte = new HintTextField("23", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pSecondArray.add(tfSixthByte);
         pThreeBytes.add(pSecondArray);
+        pVertival.add(pThreeBytes);
 
-        pArrayBytes.add(pThreeBytes);
         JLabel label = new JLabel(" ➔ ");
         label.setFont(new Font("MS Gothic", Font.BOLD, 18));
-        pArrayBytes.add(label);
+        pVertival.add(label);
 
         JPanel pThirdArray = new JPanel();
         pThirdArray.setLayout(new FlowLayout(FlowLayout.CENTER));
-        pThirdArray.add(new JLabel("D1"));
-        tfNewByte = new HintTextField("A9");
-        pThirdArray.add(tfNewByte);
-        pThirdArray.add(new JLabel("23"));
-        pArrayBytes.add(pThirdArray);
+        tfNewFirstByte = new HintTextField("D1", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pThirdArray.add(tfNewFirstByte);
+        tfNewSecondByte = new HintTextField("A9", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pThirdArray.add(tfNewSecondByte);
+        tfNewThirdByte = new HintTextField("23", DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        pThirdArray.add(tfNewThirdByte);
+        pVertival.add(pThirdArray);
 
+        JPanel pForTextFieldFileNameForChanging = new JPanel();
+        tfFileNameForChanging = new HintTextField(Constants.NAME_FILE_FOR_CHANGING, 200, 26);
+        pForTextFieldFileNameForChanging.add(tfFileNameForChanging);
+
+        pArrayBytes.add(pVertival);
+        pArrayBytes.add(pForTextFieldFileNameForChanging);
         pArrayBytes.setVisible(false);
         return pArrayBytes;
     }
@@ -211,36 +207,36 @@ public class Window {
         pFourthRow.setLayout(new FlowLayout(FlowLayout.CENTER));
 //        cbDemo = new JCheckBox("Demo");
 //        pFourthRow.add(cbDemo);
-        bStart = new JButton(START);
+        JButton bStart = new JButton(Constants.START);
         bStart.addActionListener(e -> {
             sEOBDPath = tfEOBDPath.getText();
             sVehiclePath = tfVehiclePath.getText();
-            myResourceUtils.rewriteFile(START_DIR_EOBD, tfEOBDPath.getText());
-            myResourceUtils.rewriteFile(START_DIR_VEHICLE, tfVehiclePath.getText());
+            if (!tfEOBDPath.getText().isEmpty() && !tfVehiclePath.getText().isEmpty()) {
+                myResourceUtils.rewriteFile(START_DIR_EOBD, tfEOBDPath.getText());
+                myResourceUtils.rewriteFile(START_DIR_VEHICLE, tfVehiclePath.getText());
+            }
             if (cbGlueAndCopy.isSelected() && checkCorrectnessDataEntry()) {
                 System.out.println("glueAndCopyFiles");
                 Thread thread = new Thread(() -> new GlueFiles(sProgramFiles, sEOBDPath, sVehiclePath));
                 thread.start();
             }
             if (cbReplaced.isSelected()) {
-                lStatus.setText(REPLACED_BYTES);
-//                System.out.println("findFilesAndReplacementBytes");
+                lStatus.setText(Constants.REPLACED_BYTES);
                 Thread thread = new Thread(() ->
-                        new LibDEVICEID(tfFirstByte.getText(), tfSecondByte.getText(), tfNewByte.getText())
-                                .findFilesAndReplacementBytes(sVehiclePath, sFindFileLibDeviceid));
-                thread.start();
-                thread = new Thread(() ->
-                        new LibDIAG().findFilesAndReplacementBytes(sVehiclePath, sFindFileLibDiag));
+                        new ReplacementBytes(tfFirstByte.getText(), tfSecondByte.getText(), tfThirdByte.getText(),
+                                tfFourthByte.getText(), tfFifthByte.getText(), tfSixthByte.getText(),
+                                tfNewFirstByte.getText(), tfNewSecondByte.getText(), tfNewThirdByte.getText())
+                                .findFilesAndReplacementBytes(sVehiclePath, tfFileNameForChanging.getText()));
                 thread.start();
                 try {
                     thread.join();
-                    lStatus.setText(DONE);
+                    lStatus.setText(Constants.DONE);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 }
             }
         });
-        lStatus = new JLabel(STATUS);
+        lStatus = new JLabel(Constants.STATUS);
         pFourthRow.add(bStart);
         pFourthRow.add(lStatus);
     }
@@ -269,7 +265,7 @@ public class Window {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         fileChooser.setCurrentDirectory(new File(sStartDirectory));
-        int ret = fileChooser.showDialog(null, SELECT_DIRECTORY);
+        int ret = fileChooser.showDialog(null, Constants.SELECT_DIRECTORY);
         if (ret == 0) {
             return fileChooser.getSelectedFile().getAbsolutePath();
         }

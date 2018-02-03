@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.*;
@@ -17,6 +18,20 @@ public class HintTextField extends JTextField implements FocusListener {
         this.showingHint = true;
         super.addFocusListener(this);
 
+        tuningActions();
+    }
+
+    public HintTextField(String hint, int width, int height) {
+        super(hint);
+        this.hint = hint;
+        this.showingHint = true;
+        super.addFocusListener(this);
+
+        this.setPreferredSize(new Dimension(width, height));
+        tuningActions();
+    }
+
+    private void tuningActions() {
         JPopupMenu menu = new JPopupMenu();
         Action cut = new MyEditorKit.CutAction();
         cut.putValue(Action.NAME, CUT);
@@ -37,7 +52,6 @@ public class HintTextField extends JTextField implements FocusListener {
         selectAll.putValue(Action.NAME, SELECT_ALL);
         selectAll.putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("control A"));
         menu.add( selectAll );
-//        new MyEditorKit.
 
         this.setComponentPopupMenu( menu );
     }

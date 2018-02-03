@@ -30,28 +30,6 @@ public class MyResourceUtils {
 		}
 	}
 
-	public String getStartDirEOBD(String sStartDir) {
-		switch (sStartDir) {
-			case START_DIR_EOBD:
-				return sStartDirEOBD;
-			case START_DIR_VEHICLE:
-				return sStartDirVehicle;
-			default:
-				return "";
-		}
-	}
-
-	public void rewriteStartDir(String sStartDir, String path) {
-		switch (sStartDir) {
-			case START_DIR_EOBD:
-				sStartDirEOBD = path;
-				break;
-			case START_DIR_VEHICLE:
-				sStartDirVehicle = path;
-				break;
-		}
-	}
-
 	public String readFiles(String fileName)  {
 		byte[] encoded = new byte[0];
 		try {

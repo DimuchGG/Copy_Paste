@@ -7,8 +7,7 @@ public class Main {
     private static String file = "HexPractice.temp";
 
     public static void main(String[] args) {
-        Window w = new Window();
-        w.setVisible(true);
+        (new Window()).setVisible(true);
 //
 //        try {
 //            FileUtils.replacementBytes(new File(path + "\\" + file),
